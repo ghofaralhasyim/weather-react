@@ -1,3 +1,4 @@
+import performance from '../assets/img/performance-audit.png'
 const Info: React.FC = () => {
   return (
     <main className="pt-20 bg-gray-50 min-h-screen">
@@ -36,6 +37,10 @@ const Info: React.FC = () => {
           <p>API : <b><a href="https://open-meteo.com" target="blank" className="underline text-blue-500">open-meteo.com</a></b></p>
           <p>Deployment : <b><a href="https://vercell.com" target="blank" className="underline text-blue-500">vercell.com</a></b></p>
          </div>
+        <h2 className="font-poppins text-gray-700 font-semibold my-2">
+          Performance
+        </h2>
+        <img src={performance} alt="performance test" />
         </div>
     </main>
   )
