@@ -19,7 +19,7 @@ const Navbar = () => {
             </button>
           </div>
           <ul className="flex flex-col md:flex-row">
-            {/* <li className="p-4"><Link to="/test">Home</Link></li> */}
+            <li className="p-4"><Link to="/info">Info</Link></li>
           </ul>
         </nav>
         </div>

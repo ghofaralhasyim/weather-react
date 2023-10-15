@@ -13,7 +13,7 @@ export const Ads: React.FC<AdsProps> = (props) => {
   return (
       <>
         <div className="relative mx-auto flex items-end justify-center z-20">
-            <img src={props.ads?.image} className="w-64 -bottom-10 absolute" alt="" />
+            <img src={props.ads?.image} className="w-44 h-72 -bottom-10 absolute" alt="" />
         </div>
         <div className="bg-white shadow-lg relative -top-4 max-w-2xl mx-auto px-8 pt-16 pb-8 rounded-xl relative">
             <div>
