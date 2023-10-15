@@ -63,8 +63,8 @@ export const Homepage = () => {
                 <div className="grid grid-cols-12">
                     <div className="order-1 col-span-6 flex flex-col justify-center md:items-end md:col-span-3">
                         <div>
-                            <div className="flex items-start">
-                                <span className="font-medium text-8xl">{data?.current.temperature_2m}</span>
+                            <div className="flex items-start h-24 ">
+                                <span className="font-medium text-8xl w-52">{data?.current.temperature_2m}</span>
                                 <span className="text-4xl font-medium">o</span>
                             </div>
                             <p className="font-light w-40">Plaza Indonesia, Jakarta.</p>
@@ -73,12 +73,12 @@ export const Homepage = () => {
                     <div className="order-3 col-span-12 md:col-span-6 flex justify-center">
                         {
                             isNight ?
-                                 <img src={data && data.current.precipitation > 0.7 ? nightRainIllustration : nightIllustration} className="w-full max-w-lg" width={368} height={368} alt="illustration" /> : 
-                                <img src={data && data.current.precipitation > 0.7 ? rainIllustration : dayIllustration} className="w-full max-w-lg" width={368} height={368} alt="illustration" /> 
+                                 <img src={data && data.current.precipitation > 0.7 ? nightRainIllustration : nightIllustration} className="w-full max-w-lg object-contain" width={368} height={368} alt="illustration" /> : 
+                                <img src={data && data.current.precipitation > 0.7 ? rainIllustration : dayIllustration} className="w-full max-w-lg object-contain" width={368} height={368} alt="illustration" /> 
                         }
                     </div>
                     <div className="order-2 col-span-6 md:col-span-3 flex flex-col pt-2 md:pt-0 md:pl-6 md:justify-center md:order-3">
-                        <div className="flex items-center gap-2 ">
+                        <div className="flex items-center gap-2 w-40">
                             <FaWind />
                             {
                                 data ?
@@ -87,7 +87,7 @@ export const Homepage = () => {
                                 </div> : '--'
                             }
                         </div>
-                         <div className="flex items-center gap-2 mt-2">
+                         <div className="flex items-center gap-2 mt-2 w-40">
                             <FaSun />
                             {
                                 data ?
@@ -98,7 +98,7 @@ export const Homepage = () => {
                         </div>
                     </div>
                 </div>
-               <Ads ads={advertise}/>
+               {data && <Ads ads={advertise}/>}
             </div>
         </main>
     )
