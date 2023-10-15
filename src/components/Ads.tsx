@@ -20,11 +20,11 @@ export const Ads: React.FC<AdsProps> = (props) => {
                 <h1 className="text-4xl font-semibold text-gray-800 max-w-md">
                     { props.ads?.title }
                 </h1>
-                <p className="text-gray-500 max-w-md mt-4">{ props.ads?.sub_title}</p>
+                <p className="text-gray-600 max-w-md mt-4">{ props.ads?.sub_title}</p>
             </div>
             <div className="flex mt-4 gap-4">
                 <div className="flex items-center text-gray-800"><FaLocationDot /> <span className="ml-2">{props.ads?.location}</span></div>
-                    <div className="flex items-center text-red-500"><FaTicket /> <span className="ml-2 font-semibold">15% Discount</span></div>
+                <div className="flex items-center py-1 px-4 rounded bg-red-600 text-white"><FaTicket /> <span className="ml-2 font-semibold">15% Discount</span></div>
             </div>
         </div>
       </>

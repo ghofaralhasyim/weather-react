@@ -63,8 +63,8 @@ export const Homepage = () => {
                 <div className="grid grid-cols-12">
                     <div className="order-1 col-span-6 flex flex-col justify-center md:items-end md:col-span-3">
                         <div>
-                            <div className="flex items-start">
-                                <span className="font-medium text-8xl">{data?.current.temperature_2m}</span>
+                            <div className="flex items-start h-24 ">
+                                <span className="font-medium text-8xl w-52">{data?.current.temperature_2m}</span>
                                 <span className="text-4xl font-medium">o</span>
                             </div>
                             <p className="font-light w-40">Plaza Indonesia, Jakarta.</p>
@@ -78,7 +78,7 @@ export const Homepage = () => {
                         }
                     </div>
                     <div className="order-2 col-span-6 md:col-span-3 flex flex-col pt-2 md:pt-0 md:pl-6 md:justify-center md:order-3">
-                        <div className="flex items-center gap-2 ">
+                        <div className="flex items-center gap-2 w-40">
                             <FaWind />
                             {
                                 data ?
@@ -87,7 +87,7 @@ export const Homepage = () => {
                                 </div> : '--'
                             }
                         </div>
-                         <div className="flex items-center gap-2 mt-2">
+                         <div className="flex items-center gap-2 mt-2 w-40">
                             <FaSun />
                             {
                                 data ?
