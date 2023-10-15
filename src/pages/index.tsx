@@ -73,8 +73,8 @@ export const Homepage = () => {
                     <div className="order-3 col-span-12 md:col-span-6 flex justify-center">
                         {
                             isNight ?
-                                 <img src={data && data.current.precipitation > 0.7 ? nightRainIllustration : nightIllustration} className="w-full max-w-lg" alt="illustration" /> : 
-                                <img src={data && data.current.precipitation > 0.7 ? rainIllustration : dayIllustration} className="w-full max-w-lg" alt="illustration" /> 
+                                 <img src={data && data.current.precipitation > 0.7 ? nightRainIllustration : nightIllustration} className="w-full max-w-lg" width={368} height={368} alt="illustration" /> : 
+                                <img src={data && data.current.precipitation > 0.7 ? rainIllustration : dayIllustration} className="w-full max-w-lg" width={368} height={368} alt="illustration" /> 
                         }
                     </div>
                     <div className="order-2 col-span-6 md:col-span-3 flex flex-col pt-2 md:pt-0 md:pl-6 md:justify-center md:order-3">
