@@ -16,7 +16,7 @@ interface Ads {
     location: string,
 }
 export const sunnyAds: Ads = {
-    title: 'Feeling the heat? ',
+    title: 'Looks hot out there',
     sub_title: 'Stay cool and refreshed with our icy beverages, perfect for when it feels hot outside. Beat the heat, sip, and enjoy the chill!',
     image: ice,
     location: 'We are on 1st Floor'

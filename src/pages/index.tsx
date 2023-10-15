@@ -34,7 +34,7 @@ export const Homepage = () => {
     const [advertise, setAdvertise] = useState<Ads>();
     const [isNight, setIsNight] = useState(false);
 
-    const { data, error, loading, refetch } = useAxios<DataApi>({
+    const { data, error, refetch } = useAxios<DataApi>({
         url: import.meta.env.VITE_API_URL +`forecast?latitude=${coordinate.latitude}&longitude=${coordinate.longitude}&current=temperature_2m,precipitation,windspeed,uv_index`
     });
 
@@ -43,9 +43,14 @@ export const Homepage = () => {
             refetch()
         }, 1000 * 60)
         
-        data && data?.current.precipitation > 0.7 ? setAdvertise(rainAds) : setAdvertise(sunnyAds)
+        if (data && data?.current.precipitation < 2 && data?.current.temperature_2m >= 20) {
+            setAdvertise(sunnyAds)  
+        } else {
+            setAdvertise(rainAds)
+        } 
         
-        new Date().getHours() > 17 ? setIsNight(true) : setIsNight(false)
+        const hour = new Date().getHours()
+        hour > 17 || hour < 6 ? setIsNight(true) : setIsNight(false)
 
         return () => clearInterval(intervalId)
     }, [refetch, data, advertise]);
@@ -54,32 +59,29 @@ export const Homepage = () => {
   
     return (
         <main className={`pt-16 font-poppins min-h-screen  ${isNight ? 'bg-indigo-950 text-white' : 'bg-gray-100' }`}>
-            <div className="container mx-auto px-4 pt-4">
+            <div className="container max-w-3xl mx-auto px-4 pt-4">
                 <div className="grid grid-cols-12">
-                    <div className="col-span-3 flex flex-col justify-center items-end">
+                    <div className="order-1 col-span-6 flex flex-col justify-center md:items-end md:col-span-3">
                         <div>
                             <div className="flex items-start">
-                                {
-                                    data && !loading ?
-                                        <span className="font-medium text-8xl">{data.current.temperature_2m}</span> : '--'
-                                }
+                                <span className="font-medium text-8xl">{data?.current.temperature_2m}</span>
                                 <span className="text-4xl font-medium">o</span>
                             </div>
                             <p className="font-light w-40">Plaza Indonesia, Jakarta.</p>
                         </div>
                     </div>
-                    <div className="col-span-6 flex justify-center">
+                    <div className="order-3 col-span-12 md:col-span-6 flex justify-center">
                         {
                             isNight ?
                                  <img src={data && data.current.precipitation > 0.7 ? nightRainIllustration : nightIllustration} className="w-full max-w-lg" alt="illustration" /> : 
                                 <img src={data && data.current.precipitation > 0.7 ? rainIllustration : dayIllustration} className="w-full max-w-lg" alt="illustration" /> 
                         }
                     </div>
-                    <div className="col-span-3 flex flex-col justify-center pl-6">
+                    <div className="order-2 col-span-6 md:col-span-3 flex flex-col pt-2 md:pt-0 md:pl-6 md:justify-center md:order-3">
                         <div className="flex items-center gap-2 ">
                             <FaWind />
                             {
-                                data && !loading ?
+                                data ?
                                 <div className="flex gap-1 items-end">
                                     <span className="text-xl">{data.current.windspeed}</span><span>km/h</span>
                                 </div> : '--'
@@ -88,7 +90,7 @@ export const Homepage = () => {
                          <div className="flex items-center gap-2 mt-2">
                             <FaSun />
                             {
-                                data && !loading ?
+                                data ?
                                 <div className="flex gap-1 items-end">
                                     <span className="text-xl">{data?.current.uv_index}</span>
                                 </div> : '--'
